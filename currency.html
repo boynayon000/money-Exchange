@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>currency Conveter</h1>
+<select name="currency" id="convert1" onchange="first()" oninput="first()"  >
+    <option value="BD">Taka</option>
+    <option value="US">Doller</option>
+    <option value="Russ">Dinar</option>
+</select>
+<input type="number" id="input" onchange="first()" oninput="first()" >
+<br>
+<br>
+<select name="currency" id="convert2" onchange="first()" oninput="first()" >
+    <option value="US">Doller</option>
+    <option value="BD">Taka</option>
+    <option value="Russ">Dinar</option>
+</select>
+<input type="number" id="input2" onchange="first()" oninput="first()" >
+<script>
+
+function first(){
+        
+
+    //BDTAKA        
+    input1("convert1","BD","convert2","BD",1,"input","input2");
+    input1("convert1","BD","convert2","US",0.012,"input","input2");
+    input1("convert1","BD","convert2","Russ",0.032,"input","input2");
+
+    input2("convert1","BD","convert2","BD",1,"input","input2");
+    input2("convert1","BD","convert2","US",0.012,"input","input2");
+    input2("convert1","BD","convert2","Russ",0.032,"input","input2");
+
+    
+    
+    
+   //USDOLLER
+
+    input1("convert1","US","convert2","BD",84.8,"input","input2");
+    input1("convert1","US","convert2","US",1,"input","input2");
+    input1("convert1","US","convert2","Russ",2.75,"input","input2");
+
+    
+    input2("convert2","US","convert1","BD",84.8,"input","input2");
+    input2("convert2","US","convert1","US",1,"input","input2");
+    input2("convert2","US","convert1","Russ",2.75,"input","input2");
+    //RUSSDINAR
+    input1("convert1","Russ","convert2","BD",30.89,"input","input2");
+    input1("convert1","Russ","convert2","US",0.36,"input","input2");
+    input1("convert1","Russ","convert2","Russ",1,"input","input2");
+
+    
+    input2("convert2","Russ","convert1","BD",30.89,"input","input2");
+    input2("convert2","Russ","convert1","US",0.36,"input","input2");
+    input2("convert2","Russ","convert1","Russ",1,"input","input2");
+    
+            
+        }
+        
+        
+    
+    function input1(convert1,BD,convert2,value,amount,input,input2){
+        var input=document.getElementById(input).value;
+        var output=document.getElementById(input2);
+        output.value;
+
+        if(document.getElementById(convert1).value==BD){
+        
+        if(document.getElementById(convert2).value==value){
+            output .value=input*amount;
+            }
+    }
+}
+function input2(convert1,US,convert2,value,amount,input2,input){
+        
+        var output=document.getElementById(input2).value;
+        var input=document.getElementById(input);
+        input.value;
+
+        if(document.getElementById(convert2).value==US){
+        
+        if(document.getElementById(convert1).value==value){
+            input .value=output*amount;
+            }
+    }
+}
+
+</script>
+    
+
+</body>
+</html>

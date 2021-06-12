@@ -1,0 +1,570 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>mariaPOS - POS</title>
+	<meta name="csrf-token" content="bRmNV1eNRsfgITy1iitfBoz6IEVwLyCfuf6NioEV">
+	<link rel="shortcut icon" href="http://pos.kommonproperties.com/assets/images/favicon.ico">
+	<link href="http://pos.kommonproperties.com/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="http://pos.kommonproperties.com/assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+	<link href="http://pos.kommonproperties.com/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+	<link href="http://pos.kommonproperties.com/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+	<link href="http://pos.kommonproperties.com/assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="http://pos.kommonproperties.com/assets/css/style.css" rel="stylesheet" type="text/css">
+	<style>
+		.navbar-custom {
+		            margin-left: 0;
+		        }
+		
+		        .footer {
+		            left: 0;
+		        }
+		
+		        .custom-mt {
+		            margin-top: 100px !important;
+		        }
+		
+		        .button-menu-back {
+		            border: none;
+		            color: #234890;
+		            display: inline-block;
+		            height: 60px;
+		            width: 60px;
+		            background-color: #ffffff;
+		            font-size: 24px;
+		        }
+		
+		        #time {
+		            height: 60px;
+		            line-height: 60px;
+		            margin-right: 30px;
+		        }
+		
+		        .custom-tr {
+		            font-size: 16px;
+		            border-bottom: 1px solid #000;
+		        }
+		
+		        tbody tr {
+		            border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+		            padding: 10px 0 !important;
+		        }
+	</style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="8.876.0" data-gr-ext-installed="" style="overflow: visible;">
+	<div class="topbar">
+		<nav class="navbar-custom">
+			<div class="search-wrap" id="search-wrap">
+				<div class="search-bar">
+					<input class="search-input" type="search" placeholder="Search"><a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a>
+				</div>
+			</div>
+			<ul class="navbar-right d-flex list-inline float-right mb-0">
+				<li class="list-inline-item dropdown notification-list">
+					<p id="time">6/11/2021 - 1:41:03 AM</p>
+				</li>
+				<li class="list-inline-item dropdown notification-list"> <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><span class="d-none d-md-inline-block ml-1">Muhaimin Shihab <i class="mdi mdi-chevron-down"></i></span> </a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown"> <a class="dropdown-item" href="http://pos.kommonproperties.com/logout"><i class="dripicons-exit text-muted"></i> Logout</a>
+					</div>
+				</li>
+			</ul>
+			<ul class="list-inline menu-left mb-0">
+				<li class="float-left">
+					<form action="http://pos.kommonproperties.com/pos">
+						<button class="button-menu-back waves-effect" type="submit"><i class="mdi mdi-backburger"></i>
+						</button>
+					</form>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="container-fluid mb-5">
+		<div class="row custom-mt mb-5">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<div class="col-12 text-right mb-3 p-0">
+							<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".addCustomer">Add Customer</button>
+							<div class="modal fade addCustomer" tabindex="-1" role="dialog" aria-labelledby="addCustomer" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title mt-0">Add Customer</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										</div>
+										<div class="modal-body">
+											<form action="http://pos.kommonproperties.com/pos/add-customer" method="POST">
+												<div class="form-group row">
+													<label class="col-sm-2 col-form-label">Name:</label>
+													<div class="col-sm-10">
+														<input class="form-control" type="text" name="name" required="">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-2 col-form-label">Mobile:</label>
+													<div class="col-sm-10">
+														<input class="form-control" type="text" name="phone" required="">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-2 col-form-label">Company:</label>
+													<div class="col-sm-10">
+														<input class="form-control" type="text" value="" name="company" required="">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-sm-2 col-form-label">Address:</label>
+													<div class="col-sm-10">
+														<input class="form-control" type="text" value="" name="address" required="">
+													</div>
+												</div>
+												<div class="text-right">
+													<button class="btn btn-primary waves-effect waves-light">Add</button>
+													<button class="btn btn-secondary waves-effect waves-light">Reset</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-12 mb-5">
+								<select class="custom-select">
+									<option id="customer">Walk-in Customer</option>
+									<option id="customer">Sabiha Afrin</option>
+									<option id="customer">Maria Islam</option>
+									<option id="customer">Nusrat Jahan Jui</option>
+									<option id="customer">Hasna Hena Nishi</option>
+								</select>
+							</div>
+						</div>
+						<table style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+							<thead>
+								<tr role="row" class="align-items-center custom-tr">
+									<th>Product</th>
+									<th>Quantity</th>
+									<th class="text-right">Price</th>
+									<th class="text-right">Subtotal</th>
+									<th class="text-right"><i class="mdi mdi-delete-forever"></i>
+									</th>
+								</tr>
+							</thead>
+							<tbody id="cartShow"></tbody>
+						</table>
+						<div class="row pt-5 pb-2">
+							<div class="col-md-4">Sub Total: ৳ <span id="subTotal"></span>
+							</div>
+							<div class="col-md-4 text-md-center"></div>
+							<div class="col-md-4 text-md-right">Total: ৳ <span id="grandTotal"></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 offset-md-6">
+								<div class="row">
+									<div class="col-md-6">
+										<button id="delete" class="col btn btn-warning col text-dark btn-lg">Cancel</button>
+									</div>
+									<div class="col-md-6">
+										<button type="button" class="col btn btn-primary btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Next</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title mt-0" id="myLargeModalLabel">Order Summery</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									</div>
+									<div class="modal-body">
+										<div class="form-group row align-items-center">
+											<div class="col-md-6">
+												<p class="form-control bg-primary text-light"><b>Total</b>: ৳ <span id="payable"></span>
+												</p>
+											</div>
+											<div class="col-md-6">
+												<p class="form-control bg-primary text-light"><b>Discount</b>: ৳ <span id="discount"></span>
+												</p>
+											</div>
+											<div class="col-md-6">
+												<p class="form-control bg-primary text-light"><b>Due</b>: ৳ <span id="due"></span>
+												</p>
+											</div>
+											<div class="col-md-6">
+												<p class="form-control bg-primary text-light"><b>Grand Total</b>: ৳ <span id="total"></span>
+												</p>
+											</div>
+											<div class="col-md-4">
+												<label for="">Coupon Code:</label>
+												<input class="form-control" type="text" id="coupon">
+											</div>
+											<div class="col-md-4">
+												<label for="">Pay:</label>
+												<input class="form-control" type="number" id="pay">
+											</div>
+											<div class="col-md-4">
+												<label for="">Paid By:</label>
+												<select name="" class="custom-select">
+													<option value="Cash">Cash</option>
+													<option value="Bank">Bank</option>
+												</select>
+											</div>
+										</div>
+										<div class="text-right mt-3">
+											<button onclick="order()" class="btn btn-lg btn-primary">Confirm Order</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<div class="form-group">
+							<label ">Product Name or Code:
+                            <input type="text " id="productSearch " placeholder="Product Name or Code " class="form-control ">
+                        </label">
+						</div>
+						<div class="row mt-5" id="productShow">
+							<div class="col-md-4">
+								<div onclick="addToCart('1', 'Pepsi', '20');" class="card bg-success text-light text-uppercase">
+									<div class="card-body text-center">
+										<img src="http://pos.kommonproperties.com/assets/images/logo.png" class="mb-3" alt="" width="50">
+										<p class="text-sm"><span id="p_name">Pepsi</span>
+											<br><small><span id="p_quantity">1000</span> PCS</small>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div onclick="addToCart('2', 'Coca-Cola', '20');" class="card bg-success text-light text-uppercase">
+									<div class="card-body text-center">
+										<img src="http://pos.kommonproperties.com/assets/images/logo.png" class="mb-3" alt="" width="50">
+										<p class="text-sm"><span id="p_name">Coca-Cola</span>
+											<br><small><span id="p_quantity">1000</span> PCS</small>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div onclick="addToCart('3', 'Lays Chips', '60');" class="card bg-success text-light text-uppercase">
+									<div class="card-body text-center">
+										<img src="http://pos.kommonproperties.com/assets/images/logo.png" class="mb-3" alt="" width="50">
+										<p class="text-sm"><span id="p_name">Lays Chips</span>
+											<br><small><span id="p_quantity">1000</span> PCS</small>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div onclick="addToCart('4', 'Potato Chips', '10');" class="card bg-success text-light text-uppercase">
+									<div class="card-body text-center">
+										<img src="http://pos.kommonproperties.com/assets/images/logo.png" class="mb-3" alt="" width="50">
+										<p class="text-sm"><span id="p_name">Potato Chips</span>
+											<br><small><span id="p_quantity">1000</span> PCS</small>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="invoicePOS" style="display: none;">
+		<div id="POSinvoice">
+			<center id="top">
+				<div style="text-align: right"><small>11-06-2021 - 01:40 AM</small>
+				</div>
+				<br>
+				<div class="info">
+					<h2>Grow Tech - POS</h2>
+				</div>
+			</center>
+			<div id="bot">
+				<div id="table">
+					<table>
+						<tbody>
+							<tr class="tabletitle">
+								<td class="item">
+									<h2>Item</h2>
+								</td>
+								<td class="Hours">
+									<h2>Qty</h2>
+								</td>
+								<td class="Rate">
+									<h2>Sub Total</h2>
+								</td>
+							</tr>
+						</tbody>
+						<tbody id="invoice"></tbody>
+					</table>
+					<div style="text-align: right; padding-right: 10px;">
+						<p>Total: ৳<span id="printSub"></span>
+							<br>Discount: ৳<span id="printDiscount"></span>
+							<br>Due: ৳<span id="printDue"></span>
+							<br>Grand: ৳<span id="printGrand"></span>
+						</p>
+					</div>
+				</div>
+				<div id="legalcopy">
+					<p class="legal" style="text-align: justify"><strong>Thank you for your purchase!</strong> Visit our website (www.smilymart.com) for online purchase.
+						<br>
+						<br>**Purchase of defected item must be exchanged by 24 hours with invoice.**</p>
+				</div>
+			</div>
+			<div style="text-align: center; margin-top: 10px;">
+				<p> <b>Development By Grow Tech</b>
+					<br> <a href="https://growtechbd.com">www.growtechbd.com</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">© 2021 Grow Tech. Development with <i class="mdi mdi-heart text-danger"></i> by <a href="https://growtechbd.com" target="_blank">Grow Tech</a>
+	</footer>
+	<script src="http://pos.kommonproperties.com/assets/js/jquery.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/modernizr.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/metisMenu.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/jquery.slimscroll.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/waves.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+	<script src="http://pos.kommonproperties.com/assets/js/app.js"></script>
+	<script>
+		// Invoice
+		        $("#invoicePOS").hide();
+		
+		        // Time
+		        var timeDisplay = document.getElementById("time");
+		
+		        function refreshTime() {
+		        var dateString = new Date().toLocaleString("en-US", {timeZone: "Asia/Dhaka"});
+		        var formattedString = dateString.replace(", ", " - ");
+		        timeDisplay.innerHTML = formattedString;
+		        }
+		        setInterval(refreshTime, 1000);
+		
+		        // Product Search
+		        $("#productSearch").on("keyup", function () {
+		            var product_code = document.getElementById("productSearch").value;
+		
+		            $.ajax({
+		                url: "/pos/search/"+product_code,
+		                type: "GET",
+		                data: {
+		                    value: product_code,
+		                },
+		                success: function (data) {
+		                    var output = '';
+		                    data.forEach(function (row) {
+		                        var action = "addToCart('"+row.id+"', '"+row.name+"', '"+row.sale_price+"');";
+		                        output += '<div class="col-md-4"><div onclick="'+action+'" class="card bg-success text-light text-uppercase"><div class="card-body text-center"><img src="http://pos.kommonproperties.com/assets/images/logo.png" width="50" class="mb-3" alt=""><p class="text-sm"><span id="p_name">'+row.name+'</span><br><small><span id="p_quantity">'+row.quantity+'</span> PCS</small></p></div></div></div>';
+		                    });
+		                    $("#productShow").html(output);
+		                }
+		            });
+		        });
+		
+		        var isScaneroff = true;
+		        $(document).on('keypress',function(e) {
+		            if(e.which == 13) {
+		                isScaneroff = false;
+		                var bar_code = document.getElementById("productSearch").value;
+		                $.ajax({
+		                    url: "/pos/barcode/"+encodeURI(bar_code),
+		                    type: "GET",
+		                    success: function (data) {
+		                        addToCart(data[0].id, data[0].name, data[0].sale_price);
+		                        document.getElementById("productSearch").value = "";
+		                    }
+		                });
+		            }
+		        });
+		
+		        // Add To Cart
+		        var cart = [];
+		
+		        function addToCart (id, name, price) {
+		            var id = id;
+		            var name = name;
+		            var sale_price = price;
+		            var unit_price = price;
+		            var quantity = 1;
+		            var status = true;
+		
+		            cart.forEach(function (row) {
+		                if (row.id == id) {
+		                    row.quantity += 1;
+		                    row.sale_price = row.unit_price * row.quantity;
+		                    status = false;
+		                }
+		            })
+		
+		            if (status) {
+		                cart.push({id: id, name: name, unit_price: unit_price, sale_price: sale_price, quantity: quantity});
+		            }
+		            displayCart();
+		        }
+		
+		        function displayCart () {
+		            var output = '';
+		            cart.forEach(function (row) {
+		                output += '<tr role="row"><td style="max-width: 150px !important; padding-right: 5px;">'+row.name+'</td><td><div class="row mt-2 mb-2"><div onclick="itemDown('+row.id+')" class="btn btn-primary btn-sm">-</div><div class="ml-1 mr-1">'+row.quantity+'</div><div onclick="itemUp('+row.id+')" class="btn btn-primary btn-sm">+</div></div></td><td class="text-right">৳ '+row.unit_price+'</td><td class="text-right">৳ '+row.sale_price+'</td><td class="text-right"><button onclick="itemDelete('+row.id+')" class="btn btn-sm btn-warning text-dark"><i class="mdi mdi-delete-forever"></i></button></td></tr>';
+		            })
+		            calculate();
+		            $("#cartShow").html(output);
+		        }
+		
+		        function itemUp (id) {
+		            cart.forEach(function (row) {
+		                if (row.id == id) {
+		                    row.quantity += 1;
+		                    row.sale_price = row.unit_price * row.quantity;
+		                }
+		            })
+		            displayCart();
+		        }
+		
+		        function itemDown (id) {
+		            cart.forEach(function (row) {
+		                if (row.id == id) {
+		                    row.quantity -= 1;
+		                    row.sale_price = row.unit_price * row.quantity;
+		                }
+		            })
+		            displayCart();
+		        }
+		
+		        function itemDelete (id) {
+		            for (var i = 0; i < cart.length; i++) {
+		                if (cart[i].id == id) {
+		                    cart.splice(i, 1);
+		                }
+		            }
+		            displayCart();
+		        }
+		
+		        var sub = 0;
+		        var total = 0;
+		        var discount = 0;
+		        var pay = 0;
+		//******
+		        function calculate () {
+		            sub = 0;
+		            cart.forEach(function (row) {
+		                sub += parseInt(row.sale_price);
+		            })
+		            $("#subTotal").text(sub);
+		
+		            $("#grandTotal").text(sub);
+		            $("#payable").text(sub);
+		
+		            total = sub - discount;
+		            $("#total").text(total);
+		            $("#discount").text(discount);
+		            $("#due").text((sub - discount) - pay);
+		        }
+		
+		        // Coupon
+		        $("#coupon").change(function () {
+		            // var code = document.getElementById("coupon").value;
+		
+		            /*$.ajax({
+		                url: "/pos/coupon/"+code,
+		                 type: "GET",
+		                success: function (data) {
+		                 if (data.length != 0) {
+		                       discount = data[0].value;
+		                      discount = (discount).parseInt;
+		                        calculate();
+		                    } else {
+		                        alert('No Coupon Found');
+		                    }
+		                }
+		             });*/
+                     discount=100;
+                     calculate();
+
+                   
+		        })
+		
+		        // Pay
+		        $("#pay").change(function () {
+		            pay = document.getElementById("pay").value;
+		            pay = parseInt(pay);
+		            calculate();
+		        })
+		
+		        $("#delete").on("click", function () {
+		            cart = [];
+		            sub = 0;
+		            total = 0;
+		            discount = 0;
+		
+		            displayCart();
+		        })
+		
+		        function order () {
+		            var customer = $("#customer").val();
+		
+		            $.ajax({
+		                url: "/pos/order",
+		                type: "POST",
+		                data: {
+		                    _token: $('meta[name="csrf-token"]').attr('content'),
+		                    items: cart,
+		                    user: customer,
+		                    sub: sub,
+		                    tax: 0,
+		                    due: (sub - discount) - pay,
+		                    discount: discount,
+		                    grand: sub - discount,
+		                },
+		                success: function (data) {
+		                    if (data == 1) {
+		                        alert('Purchase Complete.');
+		                        window.location.href = "/pos/pos";
+		                    } else {
+		                        alert("Technical Issues Found, Contact to the Development Team.");
+		                        window.location.href = "/pos/pos";
+		                    }
+		                }
+		            });
+		
+		
+		            // Invoice
+		            var output = '';
+		            cart.forEach(function(row){
+		                output += '<tr class="service"><td class="tableitem"><p class="itemtext">'+row.name+'</p></td><td class="tableitem"><p class="itemtext">'+row.quantity+'</p></td><td class="tableitem"><p class="itemtext"><small>৳</small>'+row.sale_price+'</p></td></tr>';
+		            });
+		            $("#invoice").html(output);
+		
+		            $("#printSub").text(sub);
+		            $("#printDiscount").text(discount);
+		            $("#printDue").text((sub - discount) - pay);
+		            $("#printGrand").text(sub - discount);
+		
+		            var divContents = document.getElementById("invoicePOS").innerHTML;
+		            var a = window.open('', '', 'height=500, width=500');
+		            a.document.write('<html><head><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"><style>#POSinvoice{padding:2mm;margin:0 auto;width:80mm;background:#FFF;font-family:"Roboto Mono";}h2{font-size:1em}p{font-size: .8em;color:#000;line-height:1.2em}#top,#bot{border-bottom:1px solid #EEE}#top{min-height:40px}#bot{min-height:40px}table{width:100%;border-collapse:collapse}.tabletitle{font-size:.8em;background:#EEE}.service{border-bottom:1px solid #EEE}.item{width:45mm}.itemtext{font-size:.7em}#legalcopy{margin-top:5mm}td:first-child{padding-left:10px}td:last-child{padding-right:10px; text-align:right;}</style></head><body>');
+		            a.document.write(divContents);
+		            a.document.write('</body></html>');
+		            a.document.close();
+		            a.print();
+		        }
+	</script>
+</body>
+
+</html>
